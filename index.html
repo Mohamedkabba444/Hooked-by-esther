@@ -35,8 +35,13 @@
 <header class="top">
   <div class="wrap bar">
     <a href="#top" class="brand" aria-label="Hooked by Esther, home"><svg class="logo-lockup" viewBox="0 0 250 76" width="206" height="63" aria-hidden="true"><use href="#logo"/></svg></a>
-    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Open menu"><span></span><span></span></button>
-    <nav id="mainNav" aria-label="Main"><a href="#shop">Collection</a><a href="#how">Made for you</a><a href="#about">My story</a><a href="#care">Care</a></nav>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Open menu">
+      <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span><span class="menu-label sr">Menu</span>
+    </button>
+    <nav id="mainNav" aria-label="Main">
+      <a href="#shop">Collection</a><a href="#how">Made for you</a><a href="#about">My story</a><a href="#care">Care</a>
+      <a class="nav-cta" href="#order">Start an order <span aria-hidden="true">↗</span></a>
+    </nav>
     <a class="btn btn-sm" href="#order">Start an order <span aria-hidden="true">↗</span></a>
   </div>
 </header>
@@ -67,12 +72,11 @@
 </section>
 
 <section class="sec testimonials" aria-labelledby="reviews-title">
-  <div class="wrap">
-    <div class="section-heading"><div><p class="eyebrow">Kind words</p><h2 id="reviews-title">Made to be loved</h2></div><p class="sub">What customers value most: careful details, a personal finish and a piece made just for them.</p></div>
-    <div class="review-grid">
-      <figure class="review"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>“The blanket is beautifully made and exactly the colours we discussed. It already feels like part of the family.”</blockquote><figcaption><strong>Sarah M.</strong><span>Custom cot blanket</span></figcaption></figure>
-      <figure class="review"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>“Esther kept me updated throughout and the little toy was even softer and sweeter than I imagined.”</blockquote><figcaption><strong>Amara J.</strong><span>Custom keepsake</span></figcaption></figure>
-      <figure class="review"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>“A warm, perfect-fitting beanie and a lovely order experience. I have already come back for another.”</blockquote><figcaption><strong>Helen R.</strong><span>Handmade beanie</span></figcaption></figure>
+    <div class="wrap review-invite">
+      <p class="eyebrow">Your kind words</p>
+      <h2 id="reviews-title">Be the first to leave a review</h2>
+      <p>If you've ordered a handmade piece from Esther, she'd love to hear what you think. Share your review with her on WhatsApp.</p>
+      <a class="btn" id="reviewLink" href="#">Leave Esther a review <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 </section>
@@ -90,7 +94,7 @@
 
 <section class="sec" id="about">
   <div class="wrap about">
-    <figure class="about-art"><img src="assets/knitting.webp" alt="A maker working with yarn and knitting needles" width="800" height="800" loading="lazy"><figcaption>One pair of hands. One careful stitch at a time.</figcaption></figure>
+    <figure class="about-art"><img src="assets/knitting.webp" alt="A maker crocheting a swatch of white yarn with a hook" width="800" height="800" loading="lazy"><figcaption>One pair of hands. One careful stitch at a time.</figcaption></figure>
     <div>
       <h2>Hi, I'm Esther</h2>
       <p>I picked up my first crochet hook to make a blanket for a friend's baby, and I haven't put it down since. Now I crochet, knit and sew small-batch pieces at my kitchen table, usually with a cup of tea going cold beside me.</p>
@@ -119,6 +123,10 @@
       <p>Fill in what you can. I reply within 2 days, usually sooner. Sending the form opens a pre-filled WhatsApp message to me, so you can check it before you send.</p>
       <a class="btn btn-sage" id="waBtn" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
       <p class="note">Prefer email? <a id="mailLink" href="#">Email Esther</a></p>
+      <div class="order-info">
+        <article><h3>Payment</h3><p>Esther confirms your final price before you commit. Pay by invoice after your details are approved, or use secure online checkout when available. No payment is taken with this request.</p></article>
+        <article><h3>Pickup or delivery</h3><p>Choose local pickup or delivery in your request. Esther will confirm availability, delivery cost and timing before you approve the order.</p></article>
+      </div>
       <div class="tracking-card">
         <h3>Track an order</h3>
         <form id="trackingForm">
@@ -137,17 +145,42 @@
         <button type="button" id="clearChoice" aria-label="Remove selected product">&times;</button>
       </div>
       <label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required>
-      <label for="f-item">What would you like me to make?</label><textarea id="f-item" name="item" rows="3" required placeholder="e.g. A cot blanket with a scalloped edge"></textarea>
-      <div class="two">
-        <div><label for="f-colors">Colours</label><input id="f-colors" name="colors" placeholder="e.g. cream and sage"></div>
-        <div><label for="f-size">Size</label><input id="f-size" name="size" placeholder="e.g. 80 x 100 cm"></div>
+      <h3 class="builder-title">Build your piece</h3>
+      <label for="f-piece">Choose a piece</label>
+      <select id="f-piece" name="piece"><option value="">Choose from the collection</option></select>
+      <p class="form-label" id="swatchLabel">Choose your yarn colours</p>
+      <div class="swatches" id="colorSwatches" role="group" aria-labelledby="swatchLabel"></div>
+      <input id="f-colors" name="colors" type="hidden">
+      <p class="swatch-selection" id="swatchSelection" aria-live="polite">No colours selected yet.</p>
+      <label for="f-size">Choose a size</label>
+      <select id="f-size" name="size">
+        <option value="Standard" selected>Standard</option>
+        <option value="Small / child">Small / child</option>
+        <option value="Large / adult">Large / adult</option>
+        <option value="Custom (confirm with Esther)">Custom (confirm with Esther)</option>
+      </select>
+      <p class="estimate" id="orderEstimate" aria-live="polite">Choose a piece to see an estimated price and making time.</p>
+      <label for="f-item">Anything else you'd like Esther to know?</label><textarea id="f-item" name="item" rows="3" required placeholder="Choose a piece above, then add a pattern, occasion or other details"></textarea>
+      <label for="f-photo">Inspiration photo <span class="optional">(optional)</span></label>
+      <input id="f-photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp">
+      <p class="field-help">Add a photo of a style, blanket or idea (JPG, PNG or WebP; up to 5 MB). It will be shared with Esther for this request.</p>
+      <div class="photo-preview" id="photoPreview" hidden>
+        <img id="photoPreviewImage" alt="Preview of your inspiration photo">
+        <button type="button" class="remove-photo" id="removePhoto">Remove photo</button>
       </div>
       <label for="f-contact">Phone, WhatsApp or email</label><input id="f-contact" name="contact" autocomplete="email" required>
       <fieldset class="payment-options">
-        <legend>Payment preference</legend>
-        <label><input type="radio" name="payment" value="invoice" checked> Confirm details and receive an invoice</label>
-        <label><input type="radio" name="payment" value="secure"> Pay securely online</label>
+        <legend>How would you like to pay?</legend>
+        <label><input type="radio" name="payment" value="invoice" checked> Invoice after the final price is confirmed</label>
+        <label><input type="radio" name="payment" value="secure"> Secure online checkout (if available)</label>
       </fieldset>
+      <fieldset class="payment-options">
+        <legend>Pickup or delivery?</legend>
+        <label><input type="radio" name="fulfillment" value="pickup" checked> Local pickup</label>
+        <label><input type="radio" name="fulfillment" value="delivery"> Delivery / postage</label>
+      </fieldset>
+      <label for="f-location">Pickup area or delivery address / postcode <span class="optional">(optional)</span></label>
+      <input id="f-location" name="location" autocomplete="shipping street-address">
       <p class="err" id="formErr" role="alert" hidden>Please fill in your name, what you'd like and how to reach you.</p>
       <button class="btn" type="submit">Place order request</button>
     </form>

@@ -13,23 +13,41 @@ const SITE = {
   stripePaymentLink: ""                // Add a Stripe Payment Link such as https://buy.stripe.com/...
 };
 
+/* Swatches and size multipliers used by the order builder. Estimates are not quotes. */
+const ORDER_SWATCHES = [
+  { name:"Cream", color:"#e9dfc9" },
+  { name:"Sage", color:"#9eaf99" },
+  { name:"Terracotta", color:"#b85f45" },
+  { name:"Dusty rose", color:"#c98f91" },
+  { name:"Sky blue", color:"#9bb9ca" },
+  { name:"Mustard", color:"#d0a845" },
+  { name:"Charcoal", color:"#535653" },
+  { name:"Chocolate", color:"#795b49" }
+];
+const ORDER_SIZES = [
+  { name:"Small / child", multiplier:0.8, extraWeeks:0 },
+  { name:"Standard", multiplier:1, extraWeeks:0 },
+  { name:"Large / adult", multiplier:1.35, extraWeeks:1 },
+  { name:"Custom (confirm with Esther)", multiplier:1.5, extraWeeks:1 }
+];
+
 /* Product catalogue. Replace photos or copy here to update the collection. */
 const PRODUCTS = [
   { name:"Cosy Throw Blanket", cat:"Blankets", photo:"assets/blanket.webp",
     desc:"A textured, generous throw for slow evenings.", materials:"Soft wool blend", fibre:"Wool-acrylic blend", size:"Custom, approximately 120 × 150 cm", care:"Hand wash cool; dry flat", allergens:"Wool fibres", price:85 },
-  { name:"Cot Blanket", cat:"Baby", photo:"assets/yarn.webp",
-    desc:"A gentle first blanket with a soft scalloped edge.", materials:"Baby-soft cotton", fibre:"100% cotton", size:"Custom, approximately 70 × 90 cm", care:"Gentle machine wash cold; dry flat", allergens:"None specified", price:60 },
+  { name:"Cot Blanket", cat:"Baby", photo:"assets/cot-blanket.jpg", alt:"Folded pink and white crocheted blankets",
+    desc:"A soft first blanket with a gentle crochet texture.", materials:"Baby-soft cotton", fibre:"100% cotton", size:"Custom, approximately 70 × 90 cm", care:"Gentle machine wash cold; dry flat", allergens:"None specified", price:60 },
   { name:"Slouchy Beanie", cat:"Hats", photo:"assets/hat.webp",
     desc:"A warm ribbed hat made for everyday wear.", materials:"Merino blend", fibre:"Merino and acrylic blend", size:"Adult; 54–58 cm head circumference", care:"Hand wash cool; dry flat", allergens:"Merino wool", price:28 },
   { name:"Chunky Scarf", cat:"Scarves", photo:"assets/scarf.webp",
     desc:"Long and squishy, with room to wrap twice.", materials:"Chunky wool blend", fibre:"Wool-acrylic blend", size:"Custom, approximately 180 × 30 cm", care:"Hand wash cool; dry flat", allergens:"Wool fibres", price:35 },
   { name:"Market Tote", cat:"Bags", photo:"assets/bag.webp",
     desc:"A sturdy crocheted tote for markets and weekends.", materials:"Cotton cord", fibre:"Recycled cotton cord", size:"Custom, approximately 38 × 42 cm", care:"Spot clean or gentle hand wash", allergens:"None specified", price:42 },
-  { name:"Baby Set", cat:"Baby", photo:"assets/knitting.webp",
+  { name:"Baby Set", cat:"Baby", photo:"assets/baby-set.jpg", alt:"Neutral baby knitwear and tiny booties on a stool",
     desc:"A small matching set for a new arrival.", materials:"Soft cotton", fibre:"Cotton baby yarn", size:"Newborn to 6 months", care:"Gentle machine wash cold; dry flat", allergens:"None specified", price:32 },
   { name:"Amigurumi Friends", cat:"Amigurumi", photo:"assets/toys.webp",
     desc:"A huggable handmade friend, made to keep.", materials:"Cotton yarn, fibrefill", fibre:"Cotton yarn and polyester fibrefill", size:"Approximately 25 cm", care:"Surface clean; keep away from moisture", allergens:"Polyester fibrefill", price:30 },
-  { name:"Made-to-Imagine", cat:"Amigurumi", photo:"assets/hero-craft.webp",
+  { name:"Made-to-Imagine", cat:"Amigurumi", photo:"assets/custom-piece.jpg", alt:"Hand-crocheted teddy bear wearing a pink dress",
     desc:"Send a drawing or favourite animal to begin.", materials:"Cotton yarn, fibrefill", fibre:"Cotton yarn and polyester fibrefill", size:"Custom; confirmed before making", care:"Surface clean; keep away from moisture", allergens:"Polyester fibrefill", price:"from 45" }
 ];
 
