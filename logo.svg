@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 76" role="img" aria-label="Hooked by Esther">
+  <text x="2" y="48" font-family="Georgia,serif" font-size="48" font-weight="600" letter-spacing="-2.5" fill="#1e2a26">Hooked</text>
+  <path d="M5 59h18" stroke="#b85f45" stroke-width="2"/>
+  <text x="30" y="64" font-family="Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="3.1" fill="#1e2a26">BY ESTHER</text>
+  <circle cx="116" cy="60.5" r="2" fill="#b85f45"/>
+</svg>

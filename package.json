@@ -1,0 +1,7 @@
+{
+  "name": "hooked-by-esther",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  }
+}
